@@ -2,9 +2,10 @@ import { motion } from "motion/react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { Heart, Users, Award, Flame, Clock, MapPin } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
+import { Link } from "react-router";
 import porkCuttingImage from "../../assets/41e40b2f3853d9ce26dcb103c87f8fb2b4950419.png";
 import santaRosaImage from "../../assets/26632a39a59eeb93299acc99a8b5a19f54326e58.png";
-import familyImage from "../../assets/a81e3540d6f2b3e392839038572d5dfe8b9bf6b5.png";
+import familyImage from "../../assets/7d7fa370643405c22f649078e88ad673ec042f60.png";
 
 export function About() {
   const { t } = useLanguage();
@@ -221,15 +222,17 @@ export function About() {
             {t("about.cta.subtitle")}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/menu"
+            <Link
+              to="/menu"
               className="inline-flex items-center justify-center gap-3 bg-white text-secondary px-8 py-4 rounded-xl hover:bg-accent transition-all transform hover:scale-105 shadow-xl text-lg font-semibold"
             >
               <Award className="w-6 h-6" />
               <span>{t("about.cta.menu")}</span>
-            </a>
+            </Link>
             <a
-              href="/contacto"
+              href="https://maps.app.goo.gl/R6hybRQ16hiGvkPH7"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-3 bg-primary text-white px-8 py-4 rounded-xl hover:bg-primary/90 transition-all transform hover:scale-105 shadow-xl text-lg font-semibold"
             >
               <MapPin className="w-6 h-6" />

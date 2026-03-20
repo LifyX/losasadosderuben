@@ -150,7 +150,7 @@ export function Menu() {
                 )}
               </div>
 
-              <div className={`grid gap-10 ${category.items.length === 1 ? 'lg:grid-cols-1 max-w-5xl mx-auto' : 'grid-cols-1'}`}>
+              <div className={`grid gap-10 ${category.items.length === 1 ? 'lg:grid-cols-1 max-w-5xl mx-auto' : 'grid-cols-1 max-w-5xl mx-auto'}`}>
                 {category.items.map((item, itemIndex) => (
                   <motion.div
                     key={itemIndex}
@@ -162,47 +162,49 @@ export function Menu() {
                       item.featured ? "ring-4 ring-secondary ring-offset-4" : ""
                     }`}
                   >
-                    <div className={`${item.featured ? 'grid lg:grid-cols-[1.2fr_1fr]' : 'grid md:grid-cols-[1fr_1.2fr]'} gap-0`}>
-                      <div className={`relative ${item.featured ? 'min-h-[500px] lg:min-h-[600px]' : 'h-[350px] md:h-full'} overflow-hidden flex items-center justify-center bg-gradient-to-br from-primary/5 to-accent/20`}>
-                        <ImageWithFallback
-                          src={item.image}
-                          alt={item.name}
-                          className={`w-full ${item.featured ? 'h-auto object-contain scale-125' : 'h-full object-cover object-center'} group-hover:scale-110 transition-transform duration-500`}
-                        />
-                        {item.badge && (
-                          <div className="absolute top-6 left-6 bg-gradient-to-r from-secondary to-secondary/90 text-white px-6 py-3 rounded-full font-bold shadow-2xl flex items-center gap-2 ring-4 ring-white/50">
-                            <Star className="w-5 h-5 fill-white" />
-                            <span className="text-base">{item.badge}</span>
-                          </div>
-                        )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="grid lg:grid-cols-2 gap-0">
+                      <div className="relative min-h-[400px] md:min-h-[450px] overflow-hidden bg-primary/5">
+                          <ImageWithFallback
+                            src={item.image}
+                            alt={item.name}
+                            className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          />
+                          {item.badge && (
+                            <div className="absolute top-6 left-6 bg-gradient-to-r from-secondary to-secondary/90 text-white px-6 py-3 rounded-full font-bold shadow-2xl flex items-center gap-2 ring-4 ring-white/50">
+                              <Star className="w-5 h-5 fill-white" />
+                              <span className="text-base">{item.badge}</span>
+                            </div>
+                          )}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       </div>
                       
-                      <div className={`${item.featured ? 'p-8 md:p-12 lg:p-14' : 'p-8 md:p-10'} flex flex-col justify-center`}>
+                      <div className="p-8 md:p-12 lg:p-14 flex flex-col justify-center">
                         <div className="space-y-5">
                           {/* Item Name and Price */}
-                          <div className="flex items-start justify-between gap-4 pb-4 border-b-2 border-secondary/10">
-                            <h3 className={`${item.featured ? 'text-3xl md:text-4xl lg:text-5xl' : 'text-3xl md:text-4xl'} font-bold text-primary group-hover:text-secondary transition-colors leading-tight flex-1`}>
+                          <div>
+                            <h3 className={`text-2xl md:text-3xl font-bold text-primary group-hover:text-secondary transition-colors leading-tight mb-3`}>
                               {item.name}
                             </h3>
                             {item.price && (
-                              <div className="flex flex-col items-end">
-                                <p className={`${item.featured ? 'text-3xl md:text-4xl' : 'text-2xl md:text-3xl'} font-bold text-secondary whitespace-nowrap`}>
+                              <div className="inline-flex items-center gap-2 bg-secondary/10 px-4 py-2 rounded-lg">
+                                <Flame className="w-4 h-4 text-secondary" />
+                                <span className="text-xl md:text-2xl font-bold text-secondary">
                                   {item.price}
-                                </p>
+                                </span>
                               </div>
                             )}
                           </div>
+                          <div className="w-12 h-0.5 bg-secondary/30 rounded-full"></div>
                           
                           {/* Description */}
-                          <p className={`text-foreground/80 leading-relaxed ${item.featured ? 'text-lg md:text-xl' : 'text-base md:text-lg'}`}>
+                          <p className={`text-foreground/80 leading-relaxed text-lg md:text-xl`}>
                             {item.description}
                           </p>
                           
                           {/* Details Box */}
                           <div className="flex items-start gap-3 bg-gradient-to-r from-accent/60 to-accent/40 p-5 rounded-xl border-l-4 border-secondary shadow-sm">
                             <Heart className="w-6 h-6 text-secondary flex-shrink-0 mt-1" />
-                            <p className={`${item.featured ? 'text-base md:text-lg' : 'text-sm md:text-base'} text-foreground/90 font-medium leading-relaxed`}>
+                            <p className={`text-base md:text-lg text-foreground/90 font-medium leading-relaxed`}>
                               {item.details}
                             </p>
                           </div>
@@ -255,7 +257,9 @@ export function Menu() {
               <span>{t("menu.cta.button")}</span>
             </a>
             <a
-              href="/"
+              href="https://maps.app.goo.gl/R6hybRQ16hiGvkPH7"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-3 bg-white text-primary px-8 py-4 rounded-xl hover:bg-accent transition-all transform hover:scale-105 shadow-xl text-lg font-semibold"
             >
               <span>{t("menu.cta.location")}</span>

@@ -93,12 +93,12 @@ export function Contact() {
               <h3 className="text-xl font-bold mb-3">{t("contact.hours.title")}</h3>
               <div className="space-y-2 text-foreground/80">
                 <div>
-                  <p className="font-semibold">{t("contact.hours.weekdays")}</p>
-                  <p>{t("contact.hours.weekdaysTime")}</p>
+                  <p className="font-semibold">{t("contact.hours.weekday")}</p>
+                  <p>{t("contact.hours.weekday.time")}</p>
                 </div>
                 <div>
                   <p className="font-semibold">{t("contact.hours.weekend")}</p>
-                  <p>{t("contact.hours.weekendTime")}</p>
+                  <p>{t("contact.hours.weekend.time")}</p>
                 </div>
               </div>
             </motion.div>

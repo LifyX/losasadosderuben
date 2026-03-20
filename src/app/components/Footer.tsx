@@ -14,18 +14,18 @@ export function Footer() {
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
           {/* Brand */}
           <div className="text-center md:text-left">
-            <div className="flex items-center justify-center md:justify-start gap-3 mb-6">
+            <div className="flex items-center justify-center md:justify-start gap-3 mb-4">
               <img 
                 src={restaurantLogo} 
                 alt="Los Asados De Ruben Logo" 
                 className="h-20 w-auto object-contain drop-shadow-lg"
               />
             </div>
-            <p className="text-accent text-sm mb-6 leading-relaxed max-w-sm mx-auto md:mx-0">
+            <p className="text-accent text-sm mb-4 leading-relaxed max-w-sm mx-auto md:mx-0">
               {t("footer.about.text")}
             </p>
             <div className="flex gap-4 justify-center md:justify-start">
@@ -52,11 +52,11 @@ export function Footer() {
 
           {/* Contact Info */}
           <div className="text-center md:text-left">
-            <h4 className="font-bold text-lg mb-6 text-accent flex items-center gap-2 justify-center md:justify-start">
+            <h4 className="font-bold text-lg mb-4 text-accent flex items-center gap-2 justify-center md:justify-start">
               <span className="w-8 h-0.5 bg-secondary"></span>
               {t("footer.contact.title")}
             </h4>
-            <div className="space-y-4 text-sm">
+            <div className="space-y-3 text-sm">
               <div className="flex flex-col md:flex-row items-center md:items-start gap-3 group">
                 <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-secondary transition-colors">
                   <MapPin className="w-4 h-4" />
@@ -81,24 +81,33 @@ export function Footer() {
 
           {/* Hours */}
           <div className="text-center md:text-left">
-            <h4 className="font-bold text-lg mb-6 text-accent flex items-center gap-2 justify-center md:justify-start">
+            <h4 className="font-bold text-lg mb-4 text-accent flex items-center gap-2 justify-center md:justify-start">
               <span className="w-8 h-0.5 bg-secondary"></span>
               {t("footer.hours.title")}
             </h4>
-            <div className="space-y-4 text-sm">
-              <div className="flex flex-col md:flex-row items-center md:items-start gap-3 group">
-                <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-secondary transition-colors">
+            <div className="space-y-2 text-sm">
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-3">
+                <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
                   <Clock className="w-4 h-4" />
                 </div>
-                <div className="text-center md:text-left text-accent/90 leading-relaxed">
-                  <p>{t("footer.hours")}</p>
+                <div className="text-center md:text-left text-accent/90 space-y-1.5">
+                  <div className="flex items-center gap-2 justify-center md:justify-start">
+                    <span className="text-accent">{t("footer.hours.weekday")}</span>
+                    <span className="text-accent/60">·</span>
+                    <span>{t("footer.hours.weekday.time")}</span>
+                  </div>
+                  <div className="flex items-center gap-2 justify-center md:justify-start">
+                    <span className="text-accent">{t("footer.hours.weekend")}</span>
+                    <span className="text-accent/60">·</span>
+                    <span>{t("footer.hours.weekend.time")}</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-12 pt-8">
+        <div className="border-t border-white/10 mt-8 pt-6">
           <div className="flex flex-col md:flex-row items-center md:justify-between gap-4 text-sm text-accent/80">
             <p className="text-center md:text-left">&copy; {new Date().getFullYear()} Los Asados De Ruben. {t("footer.rights")}</p>
             <div className="flex items-center gap-2">
