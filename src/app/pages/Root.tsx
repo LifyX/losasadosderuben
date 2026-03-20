@@ -4,8 +4,10 @@ import { Footer } from "../components/Footer";
 import { FloatingButtons } from "../components/FloatingButtons";
 import { LocalBusinessSchema } from "../components/LocalBusinessSchema";
 import { DocumentHead } from "../components/DocumentHead";
+import { LanguageProvider } from "../contexts/LanguageContext";
 import { useEffect } from "react";
 
+// Root layout wrapping all pages with LanguageProvider
 export function Root() {
   const location = useLocation();
 
@@ -15,15 +17,17 @@ export function Root() {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <DocumentHead />
-      <LocalBusinessSchema />
-      <Header />
-      <main className="flex-1">
-        <Outlet />
-      </main>
-      <Footer />
-      <FloatingButtons />
-    </div>
+    <LanguageProvider>
+      <div className="min-h-screen flex flex-col">
+        <DocumentHead />
+        <LocalBusinessSchema />
+        <Header />
+        <main className="flex-1">
+          <Outlet />
+        </main>
+        <Footer />
+        <FloatingButtons />
+      </div>
+    </LanguageProvider>
   );
 }
