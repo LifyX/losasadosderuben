@@ -73,18 +73,18 @@ export function Home() {
               {t("home.hero.subtitle")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/nosotros"
+              <a
+                href="/nosotros"
                 className="inline-flex items-center justify-center gap-2 bg-secondary text-white px-8 py-4 rounded-lg hover:bg-secondary/90 transition-all transform hover:scale-105"
               >
                 <span>{t("home.hero.cta1")}</span>
-              </Link>
-              <Link
-                to="/contacto"
+              </a>
+              <a
+                href="/contacto"
                 className="inline-flex items-center justify-center gap-2 bg-white text-primary px-8 py-4 rounded-lg hover:bg-accent transition-all transform hover:scale-105"
               >
                 <span>{t("home.hero.cta2")}</span>
-              </Link>
+              </a>
             </div>
           </motion.div>
         </div>
@@ -213,13 +213,13 @@ export function Home() {
 
           {/* CTA Button to Menu */}
           <div className="pt-10 text-center">
-            <Link
-              to="/menu"
+            <a
+              href="/menu"
               className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-secondary to-secondary/90 text-white px-8 py-4 rounded-xl hover:from-secondary/90 hover:to-secondary transition-all transform hover:scale-105 shadow-lg hover:shadow-xl font-bold text-lg"
             >
               <Flame className="w-6 h-6" />
               <span>{t("home.tradition.cta")}</span>
-            </Link>
+            </a>
           </div>
         </div>
       </motion.section>
@@ -372,12 +372,12 @@ export function Home() {
               <Phone className="w-5 h-5" />
               <span>{t("home.cta.button1")}</span>
             </a>
-            <Link
-              to="/menu"
+            <a
+              href="/menu"
               className="inline-flex items-center justify-center gap-2 bg-primary text-white px-8 py-4 rounded-lg hover:bg-primary/90 transition-all transform hover:scale-105 shadow-lg font-bold border-2 border-white/20"
             >
               <span>{t("home.cta.button2")}</span>
-            </Link>
+            </a>
           </div>
         </div>
       </motion.section>

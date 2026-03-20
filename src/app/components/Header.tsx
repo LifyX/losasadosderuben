@@ -1,4 +1,3 @@
-import { Link, useLocation } from "react-router";
 import { Phone, Menu as MenuIcon, X, Languages } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
@@ -7,12 +6,12 @@ import logo from "../../assets/0317080f99089df2b5a6e317d3c57784231215a2.png";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
+  const currentPath = typeof window !== "undefined" ? window.location.pathname : "/";
   const { language, setLanguage, t } = useLanguage();
 
   const isActive = (path: string) => {
-    if (path === "/") return location.pathname === path;
-    return location.pathname.startsWith(path);
+    if (path === "/") return currentPath === path;
+    return currentPath.startsWith(path);
   };
 
   const navLinks = [
@@ -39,8 +38,8 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link
-            to="/"
+          <a
+            href="/"
             onClick={handleLogoClick}
             className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity"
             aria-label="Go to homepage"
@@ -55,9 +54,9 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <Link
+              <a
                 key={link.path}
-                to={link.path}
+                href={link.path}
                 className={`transition-colors ${
                   isActive(link.path)
                     ? "text-secondary"
@@ -65,7 +64,7 @@ export function Header() {
                 }`}
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
           </nav>
 
@@ -129,9 +128,9 @@ export function Header() {
           >
             <nav className="flex flex-col px-4 py-4 space-y-3">
               {navLinks.map((link) => (
-                <Link
+                <a
                   key={link.path}
-                  to={link.path}
+                  href={link.path}
                   onClick={() => setIsMenuOpen(false)}
                   className={`py-2 transition-colors ${
                     isActive(link.path)
@@ -140,7 +139,7 @@ export function Header() {
                   }`}
                 >
                   {link.label}
-                </Link>
+                </a>
               ))}
               <button
                 onClick={toggleLanguage}
