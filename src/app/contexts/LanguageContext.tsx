@@ -1,6 +1,5 @@
-import { createContext, useContext, useState, type ReactNode } from "react";
+import { createContext, useContext, useState, ReactNode } from "react";
 
-// Language context for bilingual support (ES/EN)
 type Language = "es" | "en";
 
 interface LanguageContextType {
@@ -11,191 +10,188 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-const translations: Record<Language, Record<string, string>> = {
+const translations = {
   es: {
     // Header
     "nav.home": "Inicio",
-    "nav.menu": "Menu",
+    "nav.menu": "Menú",
     "nav.about": "Nosotros",
     "nav.contact": "Contacto",
     "nav.call": "Pedir Ahora",
     "nav.callNow": "Pedir Ahora",
-
+    
     // Home Page
     "home.hero.badge": "100% Artesanal",
     "home.hero.title": "Chorizos artesanales y asados tradicionales en Santa Rosa de Cabal",
     "home.hero.subtitle": "Receta original, hechos a mano y preparados al momento.",
-    "home.hero.cta1": "Conoce mas sobre nosotros",
-    "home.hero.cta2": "Contactanos",
-    "home.about.title": "Tradicion Artesanal en Cada Bocado",
-    "home.about.text1": "En Los Asados De Ruben, preparamos chorizos a mano usando la receta tradicional santarosana que ha pasado de generacion en generacion.",
-    "home.about.text2": "Cada chorizo es elaborado personalmente por el dueno, con un enfoque absoluto en la calidad, el sabor autentico y la preparacion artesanal.",
-    "home.about.text3": "Somos un negocio familiar que se enorgullece de servir a nuestra comunidad con los mejores productos, sin industrializacion, solo amor por la buena comida.",
-    "home.tradition.badge1": "Nuestra Tradicion",
-    "home.tradition.badge2": "Preparacion artesanal de chorizo",
+    "home.hero.cta1": "Conoce más sobre nosotros",
+    "home.hero.cta2": "Contáctanos",
+    "home.about.title": "Tradición Artesanal en Cada Bocado",
+    "home.about.text1": "En Los Asados De Ruben, preparamos chorizos a mano usando la receta tradicional santarosana que ha pasado de generación en generación.",
+    "home.about.text2": "Cada chorizo es elaborado personalmente por el dueño, con un enfoque absoluto en la calidad, el sabor auténtico y la preparación artesanal.",
+    "home.about.text3": "Somos un negocio familiar que se enorgullece de servir a nuestra comunidad con los mejores productos, sin industrialización, solo amor por la buena comida.",
+    "home.tradition.badge1": "Nuestra Tradición",
+    "home.tradition.badge2": "Preparación artesanal de chorizo",
     "home.tradition.badge3": "100% Artesanal",
     "home.tradition.badge4": "Hecho a Mano",
     "home.tradition.badge5": "Calidad Artesanal",
     "home.tradition.feature1.title": "Receta Tradicional",
-    "home.tradition.feature1.subtitle": "Generacion tras generacion",
+    "home.tradition.feature1.subtitle": "Generación tras generación",
     "home.tradition.feature2.title": "100% Casero",
-    "home.tradition.feature2.subtitle": "Sin industrializacion",
-    "home.tradition.cta": "Ver Nuestro Menu",
-    "home.why.title": "Por que elegirnos?",
+    "home.tradition.feature2.subtitle": "Sin industrialización",
+    "home.tradition.cta": "Ver Nuestro Menú",
+    "home.why.title": "¿Por qué elegirnos?",
     "home.why.value1.title": "100% Artesanal",
-    "home.why.value1.desc": "Cada chorizo es hecho a mano con dedicacion y pasion por la tradicion.",
+    "home.why.value1.desc": "Cada chorizo es hecho a mano con dedicación y pasión por la tradición.",
     "home.why.value2.title": "Receta Tradicional",
-    "home.why.value2.desc": "Seguimos la autentica receta santarosana transmitida por generaciones.",
+    "home.why.value2.desc": "Seguimos la auténtica receta santarosana transmitida por generaciones.",
     "home.why.value3.title": "Productos No Industrializados",
     "home.why.value3.desc": "Sin aditivos ni procesos industriales. Solo ingredientes naturales.",
-    "home.why.value4.title": "Excelente Atencion",
+    "home.why.value4.title": "Excelente Atención",
     "home.why.value4.desc": "Servicio familiar y cercano. Te atendemos como en casa.",
     "home.why.value5.title": "Favorito de los Locales",
     "home.why.value5.desc": "Reconocidos por la comunidad como los mejores chorizos de Santa Rosa.",
-    "home.why.value6.title": "Ubicacion Centrica",
-    "home.why.value6.desc": "Facil de encontrar en el corazon de Santa Rosa de Cabal.",
+    "home.why.value6.title": "Ubicación Céntrica",
+    "home.why.value6.desc": "Fácil de encontrar en el corazón de Santa Rosa de Cabal.",
     "home.reviews.title": "Lo que dicen nuestros clientes",
-    "home.reviews.rating": "Basado en resenas de Google",
-    "home.reviews.viewAll": "Ver todas las resenas en Google",
-    "home.reviews.leave": "Dejanos tu resena",
-    "home.reviews.review1.text": "Los mejores chorizos de Santa Rosa! Autentico sabor casero.",
-    "home.reviews.review1.name": "Maria Gonzalez",
-    "home.reviews.review2.text": "Excelente calidad y atencion. Los asados estan deliciosos.",
-    "home.reviews.review2.name": "Carlos Ramirez",
-    "home.reviews.review3.text": "Totalmente artesanal. Se nota la dedicacion en cada plato.",
-    "home.reviews.review3.name": "Ana Martinez",
-    "home.cta.title": "Listo para disfrutar los mejores chorizos?",
-    "home.cta.subtitle": "Visitanos o llamanos para hacer tu pedido",
+    "home.reviews.rating": "Basado en reseñas de Google",
+    "home.reviews.viewAll": "Ver todas las reseñas en Google",
+    "home.reviews.leave": "Déjanos tu reseña",
+    "home.reviews.review1.text": "Los mejores chorizos de Santa Rosa! Auténtico sabor casero.",
+    "home.reviews.review1.name": "María González",
+    "home.reviews.review2.text": "Excelente calidad y atención. Los asados están deliciosos.",
+    "home.reviews.review2.name": "Carlos Ramírez",
+    "home.reviews.review3.text": "Totalmente artesanal. Se nota la dedicación en cada plato.",
+    "home.reviews.review3.name": "Ana Martínez",
+    "home.cta.title": "¿Listo para disfrutar los mejores chorizos?",
+    "home.cta.subtitle": "Visítanos o llámanos para hacer tu pedido",
     "home.cta.button1": "Llamar ahora",
-    "home.cta.button2": "Ver menu",
-
+    "home.cta.button2": "Ver menú",
+    
     // Menu Page
-    "menu.hero.badge": "Menu Artesanal",
-    "menu.hero.title": "Sabores Autenticos de Santa Rosa",
-    "menu.hero.subtitle": "Cada plato es una obra maestra preparada con amor, recetas tradicionales y los mejores ingredientes. Dejate conquistar por nuestro sabor!",
+    "menu.hero.badge": "Menú Artesanal",
+    "menu.hero.title": "Sabores Auténticos de Santa Rosa",
+    "menu.hero.subtitle": "Cada plato es una obra maestra preparada con amor, recetas tradicionales y los mejores ingredientes. ¡Déjate conquistar por nuestro sabor!",
     "menu.category.chorizos": "Chorizos",
     "menu.category.pork": "Asados de Cerdo",
-    "menu.category.pork.desc": "Carnes selectas asadas a la perfeccion sobre carbon ardiente",
-    "menu.category.sides": "Acompanantes",
+    "menu.category.pork.desc": "Carnes selectas asadas a la perfección sobre carbón ardiente",
+    "menu.category.sides": "Acompañantes",
     "menu.category.sides.desc": "El complemento perfecto para tu experiencia",
     "menu.category.drinks": "Bebidas",
-    "menu.category.drinks.desc": "Refrescate con nuestras opciones",
+    "menu.category.drinks.desc": "Refréscate con nuestras opciones",
     "menu.item.chorizo.name": "Santarosano Chorizo",
-    "menu.item.chorizo.desc": "Nuestro orgullo y especialidad. 100% artesanal chorizo hecho con receta tradicional santarosana, sazonado con especias secretas y asado al momento sobre brasas de carbon. Un estallido de sabor autentico en cada bocado.",
-    "menu.item.chorizo.details": "Servido con arepa recien hecha, limon y aji casero",
+    "menu.item.chorizo.desc": "Nuestro orgullo y especialidad. 100% artesanal chorizo hecho con receta tradicional santarosana, sazonado con especias secretas y asado al momento sobre brasas de carbón. Un estallido de sabor auténtico en cada bocado.",
+    "menu.item.chorizo.details": "Servido con arepa recién hecha, limón y ají casero",
     "menu.item.chorizo.badge": "Especialidad de la Casa",
     "menu.item.skewers.name": "Chuzos de Cerdo",
     "menu.item.skewers.desc": "Jugosos trozos de carne de cerdo marinados por horas en nuestra salsa especial, ensartados y asados lentamente hasta lograr ese punto perfecto: crujiente por fuera, tierno por dentro.",
-    "menu.item.skewers.details": "Acompanados con papa criolla dorada, platano asado y nuestras salsas artesanales",
+    "menu.item.skewers.details": "Acompañados con papa criolla dorada, plátano asado y nuestras salsas artesanales",
     "menu.item.grilled.name": "Carne a la llanera",
-    "menu.item.grilled.desc": "Cortes premium de cerdo seleccionados cuidadosamente, asados al carbon con tecnica tradicional colombiana. La combinacion perfecta entre ahumado natural y jugosidad incomparable.",
+    "menu.item.grilled.desc": "Cortes premium de cerdo seleccionados cuidadosamente, asados al carbón con técnica tradicional colombiana. La combinación perfecta entre ahumado natural y jugosidad incomparable.",
     "menu.item.grilled.details": "Se sirve con yuca, ensalada fresca, chimichurri y arepa",
     "menu.item.ribs.name": "Costillas de Cerdo BBQ",
     "menu.item.ribs.desc": "Costillas de cerdo tiernas y jugosas, cocidas a fuego lento durante horas y glaseadas con nuestra salsa BBQ casera. Se desprenden del hueso con facilidad revelando capas de sabor intenso.",
-    "menu.item.ribs.details": "Porcion generosa ideal para compartir, incluye papas fritas y ensalada coleslaw",
-    "menu.item.ribs.badge": "Favorito del Publico",
+    "menu.item.ribs.details": "Porción generosa ideal para compartir, incluye papas fritas y ensalada coleslaw",
+    "menu.item.ribs.badge": "Favorito del Público",
     "menu.item.arepa.name": "Arepa Santarosana",
-    "menu.item.arepa.desc": "Arepa artesanal de maiz blanco molido en casa, preparada al momento en plancha de barro. Crocante por fuera, suave por dentro. El acompanante tradicional que no puede faltar.",
-    "menu.item.arepa.details": "Tamano generoso, perfecta para absorber todos los sabores",
+    "menu.item.arepa.desc": "Arepa artesanal de maíz blanco molido en casa, preparada al momento en plancha de barro. Crocante por fuera, suave por dentro. El acompañante tradicional que no puede faltar.",
+    "menu.item.arepa.details": "Tamaño generoso, perfecta para absorber todos los sabores",
     "menu.item.drinks.name": "Bebidas Variadas",
-    "menu.item.drinks.desc": "Amplia seleccion para todos los gustos: gaseosas frias, jugos naturales de frutas de temporada, agua embotellada, cervezas nacionales y mas opciones refrescantes.",
+    "menu.item.drinks.desc": "Amplia selección para todos los gustos: gaseosas frías, jugos naturales de frutas de temporada, agua embotellada, cervezas nacionales y más opciones refrescantes.",
     "menu.item.drinks.details": "Pregunta por nuestras promociones especiales",
-    "menu.note.title": "Preparacion al Momento",
-    "menu.note.text": "Todos nuestros productos son preparados al momento con ingredientes frescos seleccionados diariamente. Los tiempos de preparacion pueden variar, pero garantizamos que cada segundo de espera vale la pena.",
-    "menu.note.highlight": "La calidad no se apresura!",
-    "menu.cta.title": "Se te antoja algo delicioso?",
-    "menu.cta.subtitle": "No esperes mas. Llamanos ahora para hacer tu pedido o visitanos para disfrutar la experiencia completa",
+    "menu.note.title": "Preparación al Momento",
+    "menu.note.text": "Todos nuestros productos son preparados al momento con ingredientes frescos seleccionados diariamente. Los tiempos de preparación pueden variar, pero garantizamos que cada segundo de espera vale la pena.",
+    "menu.note.highlight": "¡La calidad no se apresura!",
+    "menu.cta.title": "¿Se te antojó algo delicioso?",
+    "menu.cta.subtitle": "No esperes más. Llámanos ahora para hacer tu pedido o visítanos para disfrutar la experiencia completa",
     "menu.cta.button": "Llamar y Ordenar",
-    "menu.cta.location": "Ver Ubicacion",
-
+    "menu.cta.location": "Ver Ubicación",
+    
     // About Page
     "about.hero.badge": "Nuestra Historia",
-    "about.hero.title": "La Tradicion del Sabor Autentico",
-    "about.hero.subtitle": "En Los Asados De Ruben, cada chorizo cuenta una historia de pasion, tradicion y amor por la gastronomia santarosana",
+    "about.hero.title": "La Tradición del Sabor Auténtico",
+    "about.hero.subtitle": "En Los Asados De Ruben, cada chorizo cuenta una historia de pasión, tradición y amor por la gastronomía santarosana",
     "about.story.badge1": "Santa Rosa de Cabal, Risaralda",
     "about.story.title1": "Un Legado de Sabor",
-    "about.story.text1": "En el corazon de Santa Rosa de Cabal, tierra conocida por sus aguas termales y tradiciones culinarias, nacio Los Asados De Ruben. Somos un restaurante familiar dedicado a preservar y celebrar el arte de hacer chorizo santarosano autentico.",
-    "about.story.text2": "Cada dia, desde las primeras horas de la manana, trabajamos con dedicacion para seleccionar los mejores ingredientes y preparar nuestros chorizos 100% artesanales. Ademas del chorizo santarosano que nos hizo famosos, ofrecemos una seleccion de asados de cerdo preparados con la misma pasion: costillas jugosas, chicharron crujiente, y cortes especiales asados a la perfeccion sobre carbon. No usamos atajos ni conservantes artificiales; solo la receta tradicional que ha hecho famoso a nuestro pueblo.",
+    "about.story.text1": "En el corazón de Santa Rosa de Cabal, tierra conocida por sus aguas termales y tradiciones culinarias, nació Los Asados De Ruben. Somos un restaurante familiar dedicado a preservar y celebrar el arte de hacer chorizo santarosano auténtico.",
+    "about.story.text2": "Cada día, desde las primeras horas de la mañana, trabajamos con dedicación para seleccionar los mejores ingredientes y preparar nuestros chorizos 100% artesanales. Además del chorizo santarosano que nos hizo famosos, ofrecemos una selección de asados de cerdo preparados con la misma pasión: costillas jugosas, chicharrón crujiente, y cortes especiales asados a la perfección sobre carbón. No usamos atajos ni conservantes artificiales; solo la receta tradicional que ha hecho famoso a nuestro pueblo.",
     "about.story.badge2": "Receta Tradicional",
     "about.story.title2": "El Secreto de Nuestro Sabor",
-    "about.story.text3": "Lo que hace especial a nuestro chorizo santarosano es la combinacion perfecta de especias cuidadosamente seleccionadas, tecnica de preparacion artesanal y, sobre todo, la pasion que ponemos en cada paso del proceso.",
-    "about.story.text4": "Desde el embutido manual hasta el asado sobre brasas de carbon natural, cada chorizo es una obra maestra. El resultado: una explosion de sabores que te transporta a la esencia misma de nuestra region cafetera.",
-    "about.story.quote": "En Los Asados De Ruben no solo servimos comida, compartimos tradicion, cultura y el orgullo de ser de Santa Rosa.",
+    "about.story.text3": "Lo que hace especial a nuestro chorizo santarosano es la combinación perfecta de especias cuidadosamente seleccionadas, técnica de preparación artesanal y, sobre todo, la pasión que ponemos en cada paso del proceso.",
+    "about.story.text4": "Desde el embutido manual hasta el asado sobre brasas de carbón natural, cada chorizo es una obra maestra. El resultado: una explosión de sabores que te transporta a la esencia misma de nuestra región cafetera.",
+    "about.story.quote": "En Los Asados De Ruben no solo servimos comida, compartimos tradición, cultura y el orgullo de ser de Santa Rosa.",
     "about.values.badge": "Nuestros Valores",
     "about.values.title": "Lo Que Nos Define",
-    "about.values.subtitle": "Estos son los pilares que guian cada decision y cada plato que servimos",
+    "about.values.subtitle": "Estos son los pilares que guían cada decisión y cada plato que servimos",
     "about.value1.title": "100% Artesanal",
-    "about.value1.desc": "Cada chorizo es hecho a mano con dedicacion y amor, siguiendo la receta tradicional transmitida de generacion en generacion.",
+    "about.value1.desc": "Cada chorizo es hecho a mano con dedicación y amor, siguiendo la receta tradicional transmitida de generación en generación.",
     "about.value2.title": "Calidad Premium",
-    "about.value2.desc": "Seleccionamos solo los mejores cortes de cerdo y las especias mas frescas para garantizar un sabor inigualable.",
-    "about.value3.title": "Asado al Carbon",
-    "about.value3.desc": "Usamos tecnicas tradicionales de asado al carbon que le dan ese sabor ahumado caracteristico y autentico.",
+    "about.value2.desc": "Seleccionamos solo los mejores cortes de cerdo y las especias más frescas para garantizar un sabor inigualable.",
+    "about.value3.title": "Asado al Carbón",
+    "about.value3.desc": "Usamos técnicas tradicionales de asado al carbón que le dan ese sabor ahumado característico y auténtico.",
     "about.value4.title": "Servicio Familiar",
-    "about.value4.desc": "Te atendemos como en casa, con calidez y hospitalidad. Aqui todos son parte de la familia.",
-    "about.family.title": "Un Negocio Familiar con Corazon",
-    "about.family.text1": "Los Asados De Ruben es mas que un restaurante; es el resultado del esfuerzo y dedicacion de una familia apasionada por la buena comida y el servicio genuino.",
+    "about.value4.desc": "Te atendemos como en casa, con calidez y hospitalidad. Aquí todos son parte de la familia.",
+    "about.family.title": "Un Negocio Familiar con Corazón",
+    "about.family.text1": "Los Asados De Ruben es más que un restaurante; es el resultado del esfuerzo y dedicación de una familia apasionada por la buena comida y el servicio genuino.",
     "about.family.text2": "Cuando nos visitas, no eres solo un cliente: eres parte de nuestra familia. Nos enorgullece atenderte con una sonrisa y asegurar que cada experiencia sea memorable.",
-    "about.family.text3": "Te esperamos con los brazos abiertos y la parrilla encendida.",
-    "about.cta.title": "Listo para Probar la Tradicion?",
-    "about.cta.subtitle": "Ven y descubre por que somos conocidos por tener los mejores chorizos de Santa Rosa de Cabal",
-    "about.cta.menu": "Ver Nuestro Menu",
-    "about.cta.location": "Como Llegar",
-
+    "about.family.text3": "Te esperamos con los brazos abiertos y la parrilla encendida. 🔥",
+    "about.cta.title": "¿Listo para Probar la Tradición?",
+    "about.cta.subtitle": "Ven y descubre por qué somos conocidos por tener los mejores chorizos de Santa Rosa de Cabal",
+    "about.cta.menu": "Ver Nuestro Menú",
+    "about.cta.location": "Cómo Llegar",
+    
     // Contact Page
-    "contact.hero.badge": "Contactanos",
-    "contact.hero.title": "Visitanos",
-    "contact.hero.subtitle": "Estamos ubicados en el corazon de Santa Rosa de Cabal",
-    "contact.address.title": "Direccion",
-    "contact.address.subtitle": "Visitanos en nuestro restaurante",
-    "contact.phone.title": "Telefono",
-    "contact.phone.subtitle": "Llamanos para hacer tu pedido o reservar",
-    "contact.hours.title": "Horarios",
-    "contact.hours.weekday": "Lunes a Jueves",
-    "contact.hours.weekday.time": "3:00 PM - 11:00 PM",
+    "contact.hero.badge": "Contáctanos",
+    "contact.hero.title": "Visítanos",
+    "contact.hero.subtitle": "Estamos ubicados en el corazón de Santa Rosa de Cabal",
+    "contact.address.title": "Dirección",
+    "contact.address.subtitle": "Visítanos en nuestro restaurante",
+    "contact.phone.title": "Teléfono",
+    "contact.phone.subtitle": "Llámanos para hacer tu pedido o reservar",
+    "contact.hours.title": "Horario",
+    "contact.hours.weekdays": "Lunes a Jueves",
+    "contact.hours.weekdaysTime": "3:00 PM - 11:00 PM",
     "contact.hours.weekend": "Viernes a Domingo",
-    "contact.hours.weekend.time": "3:00 PM - 11:30 PM",
-    "contact.map.title": "Encuentranos aqui",
-    "contact.map.subtitle": "Estamos ubicados en una zona de facil acceso en Santa Rosa de Cabal",
+    "contact.hours.weekendTime": "3:00 PM - 11:30 PM",
+    "contact.map.title": "Encuéntranos aquí",
+    "contact.map.subtitle": "Estamos ubicados en una zona de fácil acceso en Santa Rosa de Cabal",
     "contact.map.directions": "Ver Direcciones",
-    "contact.info.title": "Informacion Adicional",
+    "contact.info.title": "Información Adicional",
     "contact.info.serviceTitle": "Modalidad de servicio",
     "contact.info.service1": "Comer en el local",
     "contact.info.service2": "Para llevar",
-    "contact.info.service3": "Pedidos telefonicos",
+    "contact.info.service3": "Pedidos telefónicos",
     "contact.info.paymentTitle": "Formas de pago",
     "contact.info.payment1": "Efectivo",
     "contact.info.payment2": "Transferencias",
-    "contact.info.payment3": "Tarjetas (debito/credito)",
-    "contact.whatsapp.title": "Prefieres escribirnos?",
-    "contact.whatsapp.subtitle": "Tambien puedes contactarnos por WhatsApp",
+    "contact.info.payment3": "Tarjetas (débito/crédito)",
+    "contact.whatsapp.title": "¿Prefieres escribirnos?",
+    "contact.whatsapp.subtitle": "También puedes contactarnos por WhatsApp",
     "contact.whatsapp.button": "Escribir por WhatsApp",
-
+    
     // FAQs
     "faq.title": "Preguntas Frecuentes",
-    "faq.subtitle": "Encuentra respuestas a las preguntas mas comunes sobre nuestro restaurante",
-    "faq.q1": "Hacen entregas a domicilio?",
-    "faq.a1": "Actualmente no contamos con servicio de domicilio, pero puedes hacer tu pedido por telefono o WhatsApp y pasar a recogerlo en nuestro local.",
-    "faq.q2": "Necesito hacer reserva?",
-    "faq.a2": "No es necesario hacer reserva, atendemos por orden de llegada. Sin embargo, para grupos grandes (mas de 8 personas) te recomendamos llamar con anticipacion.",
-    "faq.q3": "Los chorizos son 100% artesanales?",
-    "faq.a3": "Si, todos nuestros chorizos son elaborados a mano diariamente con receta tradicional santarosana. No utilizamos conservantes ni aditivos artificiales.",
-    "faq.q4": "Tienen opciones vegetarianas?",
-    "faq.a4": "Nuestro restaurante se especializa en carnes y chorizos. Sin embargo, ofrecemos acompanantes como arepas, ensaladas y papas que pueden disfrutar.",
-    "faq.q5": "Aceptan tarjetas de credito?",
-    "faq.a5": "Si, aceptamos tarjetas de debito y credito, ademas de efectivo y transferencias bancarias.",
-    "faq.q6": "Cuanto tiempo tarda en prepararse un pedido?",
-    "faq.a6": "Como asamos al momento sobre brasas de carbon, el tiempo de preparacion es aproximadamente 15-20 minutos. La espera vale la pena por el sabor autentico!",
-
+    "faq.subtitle": "Encuentra respuestas a las preguntas más comunes sobre nuestro restaurante",
+    "faq.q1": "¿Hacen entregas a domicilio?",
+    "faq.a1": "Actualmente no contamos con servicio de domicilio, pero puedes hacer tu pedido por teléfono o WhatsApp y pasar a recogerlo en nuestro local.",
+    "faq.q2": "¿Necesito hacer reserva?",
+    "faq.a2": "No es necesario hacer reserva, atendemos por orden de llegada. Sin embargo, para grupos grandes (más de 8 personas) te recomendamos llamar con anticipación.",
+    "faq.q3": "¿Los chorizos son 100% artesanales?",
+    "faq.a3": "Sí, todos nuestros chorizos son elaborados a mano diariamente con receta tradicional santarosana. No utilizamos conservantes ni aditivos artificiales.",
+    "faq.q4": "¿Tienen opciones vegetarianas?",
+    "faq.a4": "Nuestro restaurante se especializa en carnes y chorizos. Sin embargo, ofrecemos acompañantes como arepas, ensaladas y papas que pueden disfrutar.",
+    "faq.q5": "¿Aceptan tarjetas de crédito?",
+    "faq.a5": "Sí, aceptamos tarjetas de débito y crédito, además de efectivo y transferencias bancarias.",
+    "faq.q6": "¿Cuánto tiempo tarda en prepararse un pedido?",
+    "faq.a6": "Como asamos al momento sobre brasas de carbón, el tiempo de preparación es aproximadamente 15-20 minutos. ¡La espera vale la pena por el sabor auténtico!",
+    
     // Footer
     "footer.about.title": "Sobre Nosotros",
-    "footer.about.text": "Restaurante especializado en chorizo santarosano 100% artesanal y carnes asadas al carbon en Santa Rosa de Cabal.",
-    "footer.quick.title": "Enlaces Rapidos",
+    "footer.about.text": "Restaurante especializado en chorizo santarosano 100% artesanal y carnes asadas al carbón en Santa Rosa de Cabal.",
+    "footer.quick.title": "Enlaces Rápidos",
     "footer.contact.title": "Contacto",
     "footer.hours.title": "Horarios",
-    "footer.hours.weekday": "Lunes a Jueves",
-    "footer.hours.weekday.time": "3:00 PM - 11:00 PM",
-    "footer.hours.weekend": "Viernes a Domingo",
-    "footer.hours.weekend.time": "3:00 PM - 11:30 PM",
+    "footer.hours": "Lunes a Jueves: 3:00 PM - 11:00 PM | Viernes a Domingo: 3:00 PM - 11:30 PM",
     "footer.rights": "Todos los derechos reservados.",
     "footer.crafted": "Creado con excelencia por",
   },
@@ -207,14 +203,14 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.contact": "Contact",
     "nav.call": "Order Now",
     "nav.callNow": "Order Now",
-
+    
     // Home Page
     "home.hero.badge": "100% Artisan",
     "home.hero.title": "Artisanal Chorizos and Traditional Grilled Meats in Santa Rosa de Cabal",
     "home.hero.subtitle": "Original recipe, handmade, and prepared to order.",
     "home.hero.cta1": "Learn More About Us",
     "home.hero.cta2": "Contact Us",
-    "home.about.title": "Artisan Tradition in Every Bite",
+    "home.about.title": "Artisan Tradition Every Bite",
     "home.about.text1": "At Los Asados De Ruben, we prepare chorizos by hand using the traditional santarosano recipe that has been passed down through generations.",
     "home.about.text2": "Each chorizo is personally crafted by the owner, with a focus on quality, authentic flavor, and artisanal preparation.",
     "home.about.text3": "We are a family business proud to serve our community with the best products, without industrialization, just love for good food.",
@@ -246,16 +242,16 @@ const translations: Record<Language, Record<string, string>> = {
     "home.reviews.viewAll": "View all reviews on Google",
     "home.reviews.leave": "Leave us a review",
     "home.reviews.review1.text": "The best chorizos in Santa Rosa! Authentic home flavor.",
-    "home.reviews.review1.name": "Maria Gonzalez",
+    "home.reviews.review1.name": "María González",
     "home.reviews.review2.text": "Excellent quality and service. The grilled meats are delicious.",
-    "home.reviews.review2.name": "Carlos Ramirez",
+    "home.reviews.review2.name": "Carlos Ramírez",
     "home.reviews.review3.text": "Totally artisanal. Dedication is noticeable in every dish.",
-    "home.reviews.review3.name": "Ana Martinez",
+    "home.reviews.review3.name": "Ana Martínez",
     "home.cta.title": "Ready to enjoy the best chorizos?",
     "home.cta.subtitle": "Visit us or call to place your order",
     "home.cta.button1": "Call now",
     "home.cta.button2": "View menu",
-
+    
     // Menu Page
     "menu.hero.badge": "Artisan Menu",
     "menu.hero.title": "Authentic Flavors of Santa Rosa",
@@ -294,7 +290,7 @@ const translations: Record<Language, Record<string, string>> = {
     "menu.cta.subtitle": "Don't wait any longer. Call us now to place your order or visit us to enjoy the full experience",
     "menu.cta.button": "Call and Order",
     "menu.cta.location": "View Location",
-
+    
     // About Page
     "about.hero.badge": "Our Story",
     "about.hero.title": "The Tradition of Authentic Flavor",
@@ -302,7 +298,7 @@ const translations: Record<Language, Record<string, string>> = {
     "about.story.badge1": "Santa Rosa de Cabal, Risaralda",
     "about.story.title1": "A Legacy of Flavor",
     "about.story.text1": "In the heart of Santa Rosa de Cabal, a land known for its hot springs and culinary traditions, Los Asados De Ruben was born. We are a family restaurant dedicated to preserving and celebrating the art of making authentic santarosano chorizo.",
-    "about.story.text2": "Every day, from the early morning hours, we work with dedication to select the best ingredients and prepare our 100% artisan chorizos. In addition to the santarosano chorizo that made us famous, we offer a selection of grilled pork prepared with the same passion: juicy ribs, crispy chicharron, and special cuts grilled to perfection over charcoal. We don't use shortcuts or artificial preservatives; only the traditional recipe that has made our town famous.",
+    "about.story.text2": "Every day, from the early morning hours, we work with dedication to select the best ingredients and prepare our 100% artisan chorizos. In addition to the santarosano chorizo that made us famous, we offer a selection of grilled pork prepared with the same passion: juicy ribs, crispy chicharrón, and special cuts grilled to perfection over charcoal. We don't use shortcuts or artificial preservatives; only the traditional recipe that has made our town famous.",
     "about.story.badge2": "Traditional Recipe",
     "about.story.title2": "The Secret of Our Flavor",
     "about.story.text3": "What makes our santarosano chorizo special is the perfect combination of carefully selected spices, artisan preparation technique and, above all, the passion we put into every step of the process.",
@@ -322,12 +318,12 @@ const translations: Record<Language, Record<string, string>> = {
     "about.family.title": "A Family Business with Heart",
     "about.family.text1": "Los Asados De Ruben is more than a restaurant; it is the result of the effort and dedication of a family passionate about good food and genuine service.",
     "about.family.text2": "When you visit us, you are not just a customer: you are part of our family. We take pride in serving you with a smile and ensuring that every experience is memorable.",
-    "about.family.text3": "We await you with open arms and the grill fired up.",
+    "about.family.text3": "We await you with open arms and the grill fired up. 🔥",
     "about.cta.title": "Ready to Taste Tradition?",
     "about.cta.subtitle": "Come and discover why we are known for having the best chorizos in Santa Rosa de Cabal",
     "about.cta.menu": "View Our Menu",
     "about.cta.location": "How to Get Here",
-
+    
     // Contact Page
     "contact.hero.badge": "Contact Us",
     "contact.hero.title": "Visit Us",
@@ -337,10 +333,10 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.phone.title": "Phone",
     "contact.phone.subtitle": "Call us to place your order or make a reservation",
     "contact.hours.title": "Hours",
-    "contact.hours.weekday": "Mon \u2013 Thu",
-    "contact.hours.weekday.time": "3:00 PM - 11:00 PM",
-    "contact.hours.weekend": "Fri \u2013 Sun",
-    "contact.hours.weekend.time": "3:00 PM - 11:30 PM",
+    "contact.hours.weekdays": "Monday to Thursday",
+    "contact.hours.weekdaysTime": "3:00 PM - 11:00 PM",
+    "contact.hours.weekend": "Friday to Sunday",
+    "contact.hours.weekendTime": "3:00 PM - 11:30 PM",
     "contact.map.title": "Find us here",
     "contact.map.subtitle": "We are located in an easily accessible area in Santa Rosa de Cabal",
     "contact.map.directions": "Get Directions",
@@ -356,7 +352,7 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.whatsapp.title": "Prefer to message us?",
     "contact.whatsapp.subtitle": "You can also contact us via WhatsApp",
     "contact.whatsapp.button": "Message on WhatsApp",
-
+    
     // FAQs
     "faq.title": "Frequently Asked Questions",
     "faq.subtitle": "Find answers to the most common questions about our restaurant",
@@ -372,30 +368,25 @@ const translations: Record<Language, Record<string, string>> = {
     "faq.a5": "Yes, we accept debit and credit cards, as well as cash and bank transfers.",
     "faq.q6": "How long does it take to prepare an order?",
     "faq.a6": "As we grill over charcoal, preparation time is approximately 15-20 minutes. The wait is worth it for the authentic flavor!",
-
+    
     // Footer
     "footer.about.title": "About Us",
     "footer.about.text": "Restaurant specializing in 100% artisan santarosano chorizo and charcoal-grilled meats in Santa Rosa de Cabal.",
     "footer.quick.title": "Quick Links",
     "footer.contact.title": "Contact",
     "footer.hours.title": "Hours",
-    "footer.hours.weekday": "Mon \u2013 Thu",
-    "footer.hours.weekday.time": "3:00 PM - 11:00 PM",
-    "footer.hours.weekend": "Fri \u2013 Sun",
-    "footer.hours.weekend.time": "3:00 PM - 11:30 PM",
+    "footer.hours": "Monday to Thursday: 3:00 PM - 11:00 PM | Friday to Sunday: 3:00 PM - 11:30 PM",
     "footer.rights": "All rights reserved.",
     "footer.crafted": "Crafted with excellence by",
   },
 };
 
-function getTranslation(lang: Language, key: string): string {
-  return translations[lang][key] || key;
-}
-
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>("es");
 
-  const t = (key: string): string => getTranslation(language, key);
+  const t = (key: string): string => {
+    return translations[language][key as keyof typeof translations.es] || key;
+  };
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t }}>
@@ -404,13 +395,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   );
 }
 
-export function useLanguage(): LanguageContextType {
+export function useLanguage() {
   const context = useContext(LanguageContext);
-  if (context) return context;
-  // Fallback for hot-reload or usage outside provider
-  return {
-    language: "es",
-    setLanguage: () => {},
-    t: (key: string) => getTranslation("es", key),
-  };
+  if (!context) {
+    throw new Error("useLanguage must be used within a LanguageProvider");
+  }
+  return context;
 }

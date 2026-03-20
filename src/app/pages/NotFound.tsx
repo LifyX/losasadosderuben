@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { Home, ArrowLeft } from "lucide-react";
 
 export function NotFound() {
@@ -10,13 +11,13 @@ export function NotFound() {
           Lo sentimos, la página que buscas no existe o ha sido movida.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="/"
+          <Link
+            to="/"
             className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-all"
           >
             <Home className="w-5 h-5" />
             <span>Ir al inicio</span>
-          </a>
+          </Link>
           <button
             onClick={() => window.history.back()}
             className="inline-flex items-center gap-2 bg-secondary text-white px-6 py-3 rounded-lg hover:bg-secondary/90 transition-all"

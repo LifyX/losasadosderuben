@@ -4,7 +4,7 @@ import { Heart, Users, Award, Flame, Clock, MapPin } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 import porkCuttingImage from "../../assets/41e40b2f3853d9ce26dcb103c87f8fb2b4950419.png";
 import santaRosaImage from "../../assets/26632a39a59eeb93299acc99a8b5a19f54326e58.png";
-import familyImage from "../../assets/7d7fa370643405c22f649078e88ad673ec042f60.jpeg";
+import familyImage from "../../assets/a81e3540d6f2b3e392839038572d5dfe8b9bf6b5.png";
 
 export function About() {
   const { t } = useLanguage();
@@ -229,9 +229,7 @@ export function About() {
               <span>{t("about.cta.menu")}</span>
             </a>
             <a
-              href="https://maps.app.goo.gl/R6hybRQ16hiGvkPH7"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/contacto"
               className="inline-flex items-center justify-center gap-3 bg-primary text-white px-8 py-4 rounded-xl hover:bg-primary/90 transition-all transform hover:scale-105 shadow-xl text-lg font-semibold"
             >
               <MapPin className="w-6 h-6" />
