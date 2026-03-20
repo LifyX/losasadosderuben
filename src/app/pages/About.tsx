@@ -5,7 +5,7 @@ import { useLanguage } from "../contexts/LanguageContext";
 import { Link } from "react-router";
 import porkCuttingImage from "../../assets/41e40b2f3853d9ce26dcb103c87f8fb2b4950419.png";
 import santaRosaImage from "../../assets/26632a39a59eeb93299acc99a8b5a19f54326e58.png";
-import familyImage from "../../assets/7d7fa370643405c22f649078e88ad673ec042f60.png";
+import familyImage from "../../assets/7d7fa370643405c22f649078e88ad673ec042f60.jpeg";
 
 export function About() {
   const { t } = useLanguage();
